@@ -1,0 +1,49 @@
+#:import AppLayout util.AppLayout
+#:import Palette util.Palette
+
+<-GenreLabel>:
+    color: Palette.black
+    font_size: dp(AppLayout.genre_label_font_size)
+    size_hint: None, None
+    size: self.texture_size[0] + dp(AppLayout.genre_label_horiz_padding), self.texture_size[1]
+
+    canvas:
+        Color:
+            rgba: Palette.image_overlay_background_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [dp(4.0)]
+
+        Color:
+            rgba: 1.0, 1.0, 1.0, 1.0
+        Rectangle:
+            texture: self.texture
+            size: self.texture_size
+            pos: int(self.center_x - self.texture_size[0] / 2.0), int(self.center_y - self.texture_size[1] / 2.0)
+
+<GenreLayout>:
+    rows: 1
+    size_hint: (None, None)
+    height: dp(AppLayout.genre_layout_height)
+    width: self.minimum_width
+    spacing: dp(AppLayout.genre_layout_spacing)
+    pos: (dp(AppLayout.image_inset), dp(AppLayout.image_inset))
+
+<BackdropImage>:
+    allow_stretch: True
+    size_hint: (1.0, 1.0)
+    pos_hint: {'x': 0.0, 'y': 0.0}
+
+<BackdropBanner>:
+    size_hint: (1.0, None)
+
+    Label:
+        text: root.title
+        font_size: dp(AppLayout.backdrop_banner_title_font_size)
+        text_size: (root.width * 0.8, None)
+        halign: 'center'
+        pos_hint: {'center': (0.5, 0.5)}
+        color: Palette.black
+        outline_color: Palette.gray
+        outline_width: dp(AppLayout.backdrop_banner_title_outline_size)

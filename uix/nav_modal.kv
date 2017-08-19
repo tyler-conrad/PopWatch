@@ -1,0 +1,78 @@
+#:import NavModalButton uix.nav_modal_button.NavModalButton
+
+#:import NowPlayingMovieScrollView uix.content_scroll_view.NowPlayingMovieScrollView
+#:import UpcomingMovieScrollView uix.content_scroll_view.UpcomingMovieScrollView
+#:import PopularMovieScrollView uix.content_scroll_view.PopularMovieScrollView
+#:import TopRatedMovieScrollView uix.content_scroll_view.TopRatedMovieScrollView
+#:import PopularTVScrollView uix.content_scroll_view.PopularTVScrollView
+#:import TopRatedTVScrollView uix.content_scroll_view.TopRatedTVScrollView
+
+#:import AppLayout util.AppLayout
+#:import Palette util.Palette
+
+<NavModalTitle@Label>:
+    font_size: dp(AppLayout.nav_modal_title_font_size)
+    color: Palette.black
+
+<NavModal>:
+    size_hint: (0.7, 0.7)
+    BoxLayout:
+        orientation: 'vertical'
+
+        Widget:
+            size_hint_y: 0.02
+
+        NavModalTitle:
+            size_hint_y: 0.08
+            text: 'Movies'
+
+        RelativeLayout:
+            size_hint_y: 0.4
+
+            GridLayout:
+                pos_hint: {'center': (0.5, 0.5)}
+                size_hint: 0.9, 0.9
+                rows: 2
+                cols: 2
+                spacing: '10dp'
+
+                NavModalButton:
+                    text: 'Now Playing'
+                    content_class: NowPlayingMovieScrollView
+
+                NavModalButton:
+                    text: 'Upcoming'
+                    content_class: UpcomingMovieScrollView
+
+                NavModalButton:
+                    text: 'Popular'
+                    content_class: PopularMovieScrollView
+
+                NavModalButton:
+                    text: 'Top Rated'
+                    content_class: TopRatedMovieScrollView
+
+
+        NavModalTitle:
+            size_hint_y: 0.08
+            text: 'TV Shows'
+
+        RelativeLayout:
+            size_hint_y: 0.4
+
+            BoxLayout:
+                pos_hint: {'center': (0.5, 0.5)}
+                size_hint: 0.9, 0.9
+                orientation: 'horizontal'
+                spacing: '10dp'
+
+                NavModalButton:
+                    text: 'Popular'
+                    content_class: PopularTVScrollView
+
+                NavModalButton:
+                    text: 'Top Rated'
+                    content_class: TopRatedTVScrollView
+
+        Widget:
+            size_hint_y: 0.02

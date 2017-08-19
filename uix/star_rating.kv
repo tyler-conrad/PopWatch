@@ -1,0 +1,26 @@
+#:import AppLayout util.AppLayout
+
+<Star>:
+    size_hint: (None, None)
+    width: dp(AppLayout.star_size)
+    height: dp(AppLayout.star_size)
+
+<ItemBlockStarRating>:
+    rows: 1
+    cols: 5
+
+    pos_hint_x: None
+    pos_hint_y: None
+    y: dp(AppLayout.image_inset)
+
+    size_hint: (None, None)
+    width: root.minimum_width
+    height: AppLayout.star_size
+
+    canvas:
+        Color:
+            rgba: Palette.image_overlay_background_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [dp(4.0)]

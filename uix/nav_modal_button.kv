@@ -1,0 +1,22 @@
+#:import AppLayout util.AppLayout
+#:import Palette util.Palette
+
+<-NavModalButton>:
+    color: Palette.black
+    font_size: dp(AppLayout.nav_modal_button_font_size)
+    group: 'nav_modal'
+    allow_no_selection: False
+
+    canvas:
+        Color:
+            rgba: Palette.dark_gray_3 if self.state == 'normal' else Palette.dark_gray_4
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+
+        Color:
+            rgba: 1.0, 1.0, 1.0, 1.0
+        Rectangle:
+            texture: self.texture
+            size: self.texture_size
+            pos: int(self.center_x - self.texture_size[0] / 2.0), int(self.center_y - self.texture_size[1] / 2.0)
